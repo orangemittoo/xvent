@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src="../src/xvent.js"></script>
+  <script>
+  $(function(){
+    $('body').xvent({
+      touchStartClassName: "is-active"
+    });
+    $('.parent').on("SomeEvent", function(a, b, c, d){
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        console.log("SomeEvent", a,b,c,d);
+        console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+    })
+    $('.parent').on("click", function(a, b, c, d){
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        console.log("click");
+        console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+    })
+  });
+
+  </script>
+  <style>
+    .parent {
+      width: 1000px;
+      height: 1000px;
+      margin: 0 auto;
+      background: #d3ffd7;
+      border: 1px #555 solid;
+      margin-bottom: 10px;
+    }
+    .ko {
+      width: 600px;
+      height: 600px;
+      margin: 200px auto;
+      background: #fff9d3;
+      border: 1px #555 solid;
+    }
+    .mago {
+      width: 200px;
+      height: 200px;
+      margin: 200px auto;
+      background: #ffbbbb;
+      border: 1px #555 solid;
+    }
+    .is-active {
+      opacity: .5;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent" data-xvent data-xvent-event="SomeEvent" data-xvent-params='{name: "hoge", age: 10}'>
+    <div class="ko">
+      <div class="mago"></div>
+    </div>
+  </div>
+</body>
+</html>
